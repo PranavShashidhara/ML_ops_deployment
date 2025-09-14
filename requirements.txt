@@ -1,0 +1,10 @@
+torch
+torchvision
+pandas
+numpy
+scikit-learn
+seaborn
+fastapi
+uvicorn[standard]
+joblib
+onnx
