@@ -8,3 +8,5 @@ fastapi
 uvicorn[standard]
 joblib
 onnx
+pytest
+onnxruntime

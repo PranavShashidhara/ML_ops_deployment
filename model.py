@@ -3,8 +3,8 @@ import pandas as pd
 import torch 
 import torch.nn as nn
 import torch.optim as optim 
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
+import sklearn.model_selection as model_selection
+import sklearn.preprocessing as preprocessing
 
 titanic = sns.load_dataset('titanic')
 
@@ -15,10 +15,10 @@ df = pd.get_dummies(df, columns=["sex", "embarked"], drop_first=True)
 X = df.drop("survived", axis=1).values
 y = df["survived"].values
 
-scaler = StandardScaler()
+scaler = preprocessing.StandardScaler()
 X = scaler.fit_transform(X)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2, random_state=42)
 
 X_train = torch.tensor(X_train, dtype=torch.float32)
 X_test = torch.tensor(X_test, dtype=torch.float32)
@@ -62,7 +62,7 @@ dummy_input = torch.randn(1, X_train.shape[1])
 torch.onnx.export(
     model,                         # trained model
     dummy_input,                    # dummy input
-    "titanic_model.onnx",           # output file
+    "app/titanic_model.onnx",           # output file
     input_names=["input"],          # input tensor name
     output_names=["output"],        # output tensor name
     dynamic_axes={"input": {0: "batch_size"}, "output": {0: "batch_size"}},
