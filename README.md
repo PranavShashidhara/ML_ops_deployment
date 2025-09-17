@@ -24,11 +24,29 @@ File structure is as shown below:
     ├── app/
     │   ├── app.py                # FastAPI service
     │   └── titanic_model.onnx    # ONNX model
+    ├── docker/
+    │   ├── Dockerfile            # Dockerfile to run the model 
+    │   └── requirements.txt      # lightweight libraries to just run the model 
     ├── requirements.txt          # Python dependencies
-    ├── Dockerfile                # Docker configuration
     ├── .dockerignore             # files/folders to exclude from Docker
+    ├── .gitignore                # To ignore unwanted files which should not be pushed to github
     └── README.md                 # project documentation
 ```
 
-Run the project 
-1. Install dependencies 
+## Running the project
+1. Install dependencies (optional for local testing): 
+```bash 
+> python -m venv venv
+> source venv/bin/activate
+> pip install -r requirements.txt 
+```
+2. Run FastAPI locally: 
+```bash 
+> unicorn app.app:app --host 0.0.0.0 --port 8000 --reload
+```
+3. Build and run Docker container: 
+```bash 
+> docker build -t onnx-fastapi
+> docker run -p 8000:8000 onnx-fastapi
+```
+The API will be available at http://localhost:8000/.
