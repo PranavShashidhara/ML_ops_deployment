@@ -42,11 +42,16 @@ File structure is as shown below:
 ```
 2. Run FastAPI locally: 
 ```bash 
-> unicorn app.app:app --host 0.0.0.0 --port 8000 --reload
+> uvicorn app.app:app --host 0.0.0.0 --port 8000 --reload
 ```
 3. Build and run Docker container: 
 ```bash 
-> docker build -t onnx-fastapi
+# Build the Docker image (run only when code or dependencies change)
+> docker build -t onnx-fastapi .
+
+# Run the container (can be done multiple times)
 > docker run -p 8000:8000 onnx-fastapi
 ```
+> **Note:** Once the Docker image is built, you can reuse it to start the container multiple times without rebuilding.
+
 The API will be available at http://localhost:8000/.
