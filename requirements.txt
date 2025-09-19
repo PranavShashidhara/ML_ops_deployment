@@ -11,3 +11,9 @@ onnx
 pytest
 onnxruntime
 unicorn
+
+httpx
+
+# For linting
+flake8
+black
