@@ -101,6 +101,7 @@ The API will be available at http://localhost:8000/.
 ```bash 
 > pytest -v test/ 
 ```
+
 > **Note:** When using 'pytest' with 'TestClient', the FastAPI app runs internally, so you don’t need to start 'uvicorn'. For manual testing with 'curl' or Postman, the app must be running via 'uvicorn'.
 ## Cheat Sheet (Common Commands)
 | Action | Command | Location | When to Run |
