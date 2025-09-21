@@ -2,6 +2,7 @@
 
 ## Overview
 
+
 This project demonstrates an end-to-end MLOps workflow using a machine learning model trained on the Titanic dataset. The focus is on production-ready deployment and reproducibility, showing how a model can move from development to production efficiently.
 
 Key aspects of this project include:
