@@ -31,8 +31,8 @@ jobs:
 
       # 4. Train the model (creates ONNX model)
       - name: Train model
-        run: python model.py --dummy  # use a dummy or small dataset for fast CI runs
-
+        run: python model.py --dummy  
+        
       # 5. Run model-level tests
       - name: Run model tests
         run: pytest -v test/test_model.py
