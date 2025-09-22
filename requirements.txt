@@ -7,8 +7,8 @@ seaborn
 fastapi
 uvicorn[standard]
 joblib
-onnx
 pytest
+onnx
 onnxruntime
 unicorn
 
