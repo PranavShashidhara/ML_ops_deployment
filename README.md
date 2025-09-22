@@ -2,6 +2,7 @@
 
 ## Overview
 
+
 This project demonstrates an end-to-end MLOps workflow using a machine learning model trained on the Titanic dataset. The focus is on production-ready deployment and reproducibility, showing how a model can move from development to production efficiently.
 
 Key aspects of this project include:
@@ -101,6 +102,7 @@ The API will be available at http://localhost:8000/.
 ```bash 
 > pytest -v test/ 
 ```
+
 > **Note:** When using 'pytest' with 'TestClient', the FastAPI app runs internally, so you don’t need to start 'uvicorn'. For manual testing with 'curl' or Postman, the app must be running via 'uvicorn'.
 ## Cheat Sheet (Common Commands)
 | Action | Command | Location | When to Run |
