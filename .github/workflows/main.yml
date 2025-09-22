@@ -43,4 +43,4 @@ jobs:
 
       # 7. Optional: Build Docker image to ensure Dockerfile works
       - name: Docker build
-        run: docker build -t onnx-fastapi docker/
+        run: docker build -t onnx-fastapi -f docker/Dockerfile .
