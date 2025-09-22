@@ -1,0 +1,46 @@
+name: MLOps CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - uses: actions/checkout@v4
+
+      # 2. Set up Python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest requests onnxruntime uvicorn
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # 4. Train the model (creates ONNX model)
+      - name: Train model
+        run: python model.py --dummy  # use a dummy or small dataset for fast CI runs
+
+      # 5. Run model-level tests
+      - name: Run model tests
+        run: pytest -v test/test_model.py
+
+      # 6. Run FastAPI app tests (using TestClient)
+      - name: Run API tests
+        run: pytest -v test/test_app.py
+
+      # 7. Optional: Build Docker image to ensure Dockerfile works
+      - name: Docker build
+        run: docker build -t onnx-fastapi docker/
