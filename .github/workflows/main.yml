@@ -55,7 +55,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_TOKEN_V1 }}
 
       # 2. Build Docker image
       - name: Build Docker image
