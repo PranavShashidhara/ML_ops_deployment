@@ -67,7 +67,7 @@ Predict survival probability:
 Build and run Docker container: 
 ```bash 
 # Build the Docker image (run only when code or dependencies change)
-> docker build -t onnx-fastapi .
+> docker build -t onnx-fastapi -f docker/Dockerfile .
 
 # Run the container (can be done multiple times)
 > docker run -p 8000:8000 onnx-fastapi
