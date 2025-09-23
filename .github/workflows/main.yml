@@ -59,7 +59,7 @@ jobs:
 
       # 2. Build Docker image
       - name: Build Docker image
-        run: docker build -t pshashid22/onnx-fastapi:latest docker/
+        run: docker build -t pshashid22/onnx-fastapi:latest -f docker/Dockerfile .
 
       # 3. Push Docker image to DockerHub
       - name: Push Docker image
